@@ -2,6 +2,7 @@ var game;
 var model;
 var emitter; // allows different parts of the game to talk and listen to each other
 var G; // stands for game
+var controller; 
 
 window.onload=function()
 {
