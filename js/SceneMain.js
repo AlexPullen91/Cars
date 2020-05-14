@@ -17,6 +17,12 @@ class SceneMain extends Phaser.Scene {
     create() {
         emitter = new Phaser.Events.EventEmitter(); // allows us to talk globally to other parts of our game
         controller = new Controller(); // instance of emitter has to exist before we use controller because we used it inside the controller
+        //
+        //
+        this.sb = new ScoreBox({scene:this}); // passes in SceneMain as the scene
+        this.sb.x = game.config.width/2; // puts it in the center
+        this.sb.y = 250; // 50px down from the top
+
         model.score = 100;
         this.road = new Road({scene:this}); // creates the road
         this.road.x = game.config.width/2;
