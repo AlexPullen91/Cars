@@ -33,10 +33,10 @@ class Road extends Phaser.GameObjects.Container {
 
     addObject() { // adds police car
         var objs = [{key:'pcar1',speed:10,scale:10}, {key:'pcar2',speed:10,scale:10}, {key:'cone',speed:20,scale:5}, {key:'barrier',speed:20,scale:8}];
-        var index = Math.floor(Math.random()*4); // pick a number between 0 and 3
+        var index = Math.floor(Math.random()*4); // pick a number between 0 and 4
         var key = objs[index].key; // chooses a random item from objs to go onto the road
         var speed = objs[index].speed;
-        var scale = objs[index].scale/100;
+        var scale = objs[index].scale/100; // changes scale of objects
 
         this.object = this.scene.add.sprite(-this.displayWidth/4,0,key); // places it at the top of the left hand lane
         this.object.speed = speed;
@@ -44,7 +44,7 @@ class Road extends Phaser.GameObjects.Container {
         if (lane < 50) {
             this.object.x = this.displayWidth/4; // moves car into different lanes
         }
-        Align.scaleToGameW(this.object, scale) // makes the car smaller 
+        Align.scaleToGameW(this.object, scale) // makes objects smaller 
         this.add(this.object); // makes it a child of the road container
     }
 
@@ -81,6 +81,11 @@ class Road extends Phaser.GameObjects.Container {
 
     moveObject() {
         this.object.y+=this.vSpace / this.object.speed;
+        if (Collision.checkCollide(this.car,this.object)==true) {
+            this.car.alpha=.5;
+        } else {
+            this.car.alpha=1;
+        }
         if (this.object.y > game.config.height) { // if below the bottom of the game then destroy object
             this.object.destroy();
             this.addObject(); // add a new object everytime we destroy an object

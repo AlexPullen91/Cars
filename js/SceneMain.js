@@ -18,6 +18,7 @@ class SceneMain extends Phaser.Scene {
         this.road = new Road({scene:this}); // creates the road
         this.road.x = game.config.width/2;
         this.road.makeLines(); // adds lines to the road
+        model.score = 100;
         
     }
     update() {
