@@ -34,8 +34,8 @@ class SceneMain extends Phaser.Scene {
         this.alignGrid.showNumbers(); // defines alignGrid class instance
         this.alignGrid.placeAtIndex(4, this.sb); // passes in config object
 
-        var flatButton = new FlatButton({scene:this, key:'button1', text:'Press ME!', x:240, y:100, event: 'button_pressed'});
-        var flatButton2 = new FlatButton({scene:this, key:'button2', text:'Press ME!', x:240, y:300, event: 'button_pressed'});
+        var flatButton = new FlatButton({scene:this, key:'button1', text:'Fire!', x:240, y:100, event: 'button_pressed', params:'fire_lasers'});
+        var flatButton2 = new FlatButton({scene:this, key:'button2', text:'Destruct!', x:240, y:300, event: 'button_pressed', params:'self_destruct'});
 
         emitter.on('button_pressed', this.buttonPressed, this);
         
@@ -44,8 +44,8 @@ class SceneMain extends Phaser.Scene {
         
         
     }
-    buttonPressed() {
-        console.log("button pressed");
+    buttonPressed(params) {
+        console.log(params);
     }
     update() {
         this.road.moveLines();
