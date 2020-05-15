@@ -34,6 +34,7 @@ class SceneMain extends Phaser.Scene {
 
         this.face = this.add.sprite(0, 0, "face");
         alignGrid.placeAtIndex(16, this.face);
+        Align.scaleToGameW(this.face,.2); // scales objects down along with screen scaling
         
         
     }
