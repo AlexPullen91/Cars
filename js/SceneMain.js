@@ -20,10 +20,9 @@ class SceneMain extends Phaser.Scene {
         //
         //
         this.sb = new ScoreBox({scene:this}); // passes in SceneMain as the scene
-        this.sb.x = game.config.width/2; // puts it in the center
-        this.sb.y = 250; // 50px down from the top
+        this.sb.x = game.config.width-50; // puts it in the center
+        this.sb.y = 50; // 50px down from the top
 
-        model.score = 100;
         this.road = new Road({scene:this}); // creates the road
         this.road.x = game.config.width/2;
         this.road.makeLines(); // adds lines to the road
