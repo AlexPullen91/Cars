@@ -37,4 +37,32 @@ class AlignGrid {
 
         this.graphics.strokePath(); // allows me to draw the lines
     }
+    placeAt(xx, yy, obj) {
+        //calc position based upon the cellwidth and cellheight
+        var x2 = this.cw * xx + this.cw / 2; // places the image dead center
+        var y2 = this.ch * yy + this.ch / 2; // places the image dead center
+
+        obj.x = x2;
+        obj.y = y2;
+    }
+    placeAtIndex(index, obj) {
+        var yy = Math.floor(index / this.config.cols); // get the number of cols and divivde the index number by it and return the integer
+        var xx = index - (yy * this.config.cols); // get the x position by subtracting the row times the number of cols and get the left over number
+
+        this.placeAt(xx, yy, obj);
+    }
+    showNumbers() { // tells me exactly where to put an object
+
+        this.show();
+        var count = 0;
+        for (var i = 0; i < this.config.rows; i++) { 
+            for (var j = 0; j < this.config.cols; j++) {
+                var numText = this.scene.add.text(0, 0, count,{color:'#ff0000'}); 
+                numText.setOrigin(0.5, 0.5); // sets it in the center of the cell
+                this.placeAtIndex(count, numText); // places it on the grid
+
+                count++;
+            }
+        }
+    }
 }
