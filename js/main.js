@@ -18,7 +18,7 @@ window.onload=function() {
             width: 480,
             height: 640,
             parent: 'phaser-game',
-            scene: [SceneMain]
+            scene: [SceneTitle, SceneMain]
         };
     } else {
         var config = { // this makes the game fill the screen whatever size the device is
@@ -26,7 +26,7 @@ window.onload=function() {
             width: window.innerWidth,
             height: window.innerHeight,
             parent: 'phaser-game',
-            scene: [SceneMain]
+            scene: [SceneTitle, SceneMain]
         };
 
     }

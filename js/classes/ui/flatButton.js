@@ -17,7 +17,12 @@ class FlatButton extends Phaser.GameObjects.Container {
         this.add(this.back);
 
         if (config.text) { // incase we're not making a blank button then we add a text field
-            this.text1 = this.scene.add.text(0, 0, config.text);
+            if (config.textConfig) {
+                this.text1 = this.scene.add.text(0, 0, config.text, config.textConfig);
+            } else {
+                this.text1 = this.scene.add.text(0, 0, config.text);
+            }
+            
             this.text1.setOrigin(0.5, 0.5); // sets text right in the dead center of the button
             this.add(this.text1); // add the text over the button
         }

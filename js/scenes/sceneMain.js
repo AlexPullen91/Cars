@@ -34,7 +34,8 @@ class SceneMain extends Phaser.Scene {
         this.alignGrid.showNumbers(); // defines alignGrid class instance
         this.alignGrid.placeAtIndex(4, this.sb); // passes in config object
 
-        var flatButton = new FlatButton({scene:this, key:'button1', text:'Fire!', x:240, y:100, event: 'button_pressed', params:'fire_lasers'});
+        var fireText = {color:'black', fontSize:30};
+        var flatButton = new FlatButton({scene:this, key:'button1', text:'Fire!', x:240, y:100, event: 'button_pressed', params:'fire_lasers', textConfig:fireText});
         var flatButton2 = new FlatButton({scene:this, key:'button2', text:'Destruct!', x:240, y:300, event: 'button_pressed', params:'self_destruct'});
 
         emitter.on('button_pressed', this.buttonPressed, this);
