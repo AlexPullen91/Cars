@@ -11,6 +11,8 @@ class SceneMain extends Phaser.Scene {
         this.load.image("pcar2", "images/pcar2.png");
         this.load.image("cone", "images/cone.png");
         this.load.image("barrier", "images/barrier.png");
+        this.load.image("button1", "images/ui/buttons/2/1.png");
+        this.load.image("button2", "images/ui/buttons/2/5.png");
         
 
         
@@ -32,11 +34,18 @@ class SceneMain extends Phaser.Scene {
         this.alignGrid.showNumbers(); // defines alignGrid class instance
         this.alignGrid.placeAtIndex(4, this.sb); // passes in config object
 
+        var flatButton = new FlatButton({scene:this, key:'button1', text:'Press ME!', x:240, y:100, event: 'button_pressed'});
+        var flatButton2 = new FlatButton({scene:this, key:'button2', text:'Press ME!', x:240, y:300, event: 'button_pressed'});
+
+        emitter.on('button_pressed', this.buttonPressed, this);
         
         // alignGrid.placeAtIndex(16, this.face);
         // Align.scaleToGameW(this.face,.2); // scales objects down along with screen scaling
         
         
+    }
+    buttonPressed() {
+        console.log("button pressed");
     }
     update() {
         this.road.moveLines();
