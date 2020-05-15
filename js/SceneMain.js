@@ -11,7 +11,7 @@ class SceneMain extends Phaser.Scene {
         this.load.image("pcar2", "images/pcar2.png");
         this.load.image("cone", "images/cone.png");
         this.load.image("barrier", "images/barrier.png");
-        this.load.image("face", "images/face.png");
+        
 
         
     }
@@ -28,13 +28,13 @@ class SceneMain extends Phaser.Scene {
         this.road.x = game.config.width/2;
         this.road.makeLines(); // adds lines to the road
 
-        var gridConfig = {rows:5, cols:5, scene:this}; // makes a 5 by 5 grid
-        var alignGrid = new AlignGrid(gridConfig); // defines alignGrin class instance
-        alignGrid.showNumbers() // passes in config object
+        this.alignGrid = new AlignGrid({scene:this, rows:5, cols:5});
+        this.alignGrid.showNumbers(); // defines alignGrid class instance
+        this.alignGrid.placeAtIndex(4, this.sb); // passes in config object
 
-        this.face = this.add.sprite(0, 0, "face");
-        alignGrid.placeAtIndex(16, this.face);
-        Align.scaleToGameW(this.face,.2); // scales objects down along with screen scaling
+        
+        // alignGrid.placeAtIndex(16, this.face);
+        // Align.scaleToGameW(this.face,.2); // scales objects down along with screen scaling
         
         
     }

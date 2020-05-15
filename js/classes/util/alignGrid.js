@@ -42,8 +42,8 @@ class AlignGrid {
         var x2 = this.cw * xx + this.cw / 2; // places the image dead center
         var y2 = this.ch * yy + this.ch / 2; // places the image dead center
 
-        obj.x = x2;
-        obj.y = y2;
+        // obj.x = x2;
+        // obj.y = y2;
     }
     placeAtIndex(index, obj) {
         var yy = Math.floor(index / this.config.cols); // get the number of cols and divivde the index number by it and return the integer
