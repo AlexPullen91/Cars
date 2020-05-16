@@ -1,6 +1,15 @@
 class Model { // central storage locaton for all of the games data
     constructor() { // where all of the variables and data for the game will go
         this._score = 0;
+        this.soundOn = true;
+        this._musicOn = true;
+    }
+    set musicOn(val) {
+        this._musicOn = val;
+        emitter.emit(G.MUSIC_CHANGED);
+    }
+    get musicOn(val) {
+        return this._musicOn;
     }
     set score(val) { // lets me know when the score is updated
         this._score = val; // sets score locally
