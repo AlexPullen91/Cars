@@ -8,7 +8,7 @@ class Model { // central storage locaton for all of the games data
         this._musicOn = val;
         emitter.emit(G.MUSIC_CHANGED);
     }
-    get musicOn(val) {
+    get musicOn() {
         return this._musicOn;
     }
     set score(val) { // lets me know when the score is updated
