@@ -15,12 +15,13 @@ class SceneMain extends Phaser.Scene {
         this.load.image("button2", "images/ui/buttons/2/5.png");
         
         this.load.audio("cat", ["audio/meow.mp3", "audio/meow.ogg"]);
-
+        this.load.audio("backgroundMusic", ["audio/background.mp3", "audio/background.ogg"]);
         
     }
     create() {
         
         var mediaManager = new MediaManager({scene: this});
+        mediaManager.setBackgroundMusic("backgroundMusic");
 
         this.sb = new ScoreBox({scene:this}); // passes in SceneMain as the scene
         this.sb.x = game.config.width-50; // puts it in the center

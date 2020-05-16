@@ -7,4 +7,8 @@ class MediaManager {
         var sound = this.scene.sound.add(key);
         sound.play();
     }
+    setBackgroundMusic(key) {
+        var background = this.scene.sound.add(key, {volume: .5, loop: true});
+        background.play();
+    }
 }
