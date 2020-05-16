@@ -42,6 +42,7 @@ class SceneMain extends Phaser.Scene {
     }
     buttonPressed(params) {
         console.log(params);
+        this.scene.start("SceneOver");
     }
     update() {
         this.road.moveLines();

@@ -37,8 +37,18 @@ class FlatButton extends Phaser.GameObjects.Container {
 
         if (config.event) { // check to see if config has an event
             this.back.setInteractive(); // make it accept events
-            this.back.on('pointerdown', this.pressed, this) // 
+            this.back.on('pointerdown', this.pressed, this)
         }
+        if (model.isMobile == -1) { // means we're on desktop or laptop
+            this.back.on("pointerover", this.over, this);
+            this.back.on("pointerout", this.out, this);
+        }
+    }
+    over() {
+        this.y -= 5;
+    }
+    out() {
+        this.y += 5;
     }
     pressed() {
         if (this.config.params) {
