@@ -14,11 +14,14 @@ class SceneMain extends Phaser.Scene {
         this.load.image("button1", "images/ui/buttons/2/1.png");
         this.load.image("button2", "images/ui/buttons/2/5.png");
         
+        this.load.audio("cat", ["audio/meow.mp3", "audio/meow.ogg"]);
 
         
     }
     create() {
         
+        var mediaManager = new MediaManager({scene: this});
+
         this.sb = new ScoreBox({scene:this}); // passes in SceneMain as the scene
         this.sb.x = game.config.width-50; // puts it in the center
         this.sb.y = 50; // 50px down from the top
@@ -42,7 +45,8 @@ class SceneMain extends Phaser.Scene {
     }
     buttonPressed(params) {
         console.log(params);
-        this.scene.start("SceneOver");
+        emitter.emit(G.PLAY_SOUND, 'cat')
+        // this.scene.start("SceneOver");
     }
     update() {
         this.road.moveLines();
