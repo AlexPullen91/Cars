@@ -4,7 +4,7 @@ var emitter; // allows different parts of the game to talk and listen to each ot
 var G; // stands for game
 var controller; 
 
-window.onload=function() {
+window.onload = function() {
 
     var isMobile = navigator.userAgent.indexOf("Mobile"); // detects if user is on mobile
     if (isMobile == -1) {
@@ -18,7 +18,7 @@ window.onload=function() {
             width: 480,
             height: 640,
             parent: 'phaser-game',
-            scene: [SceneTitle, SceneMain, SceneOver]
+            scene: [SceneLoad, SceneTitle, SceneMain, SceneOver]
         };
     } else {
         var config = { // this makes the game fill the screen whatever size the device is
@@ -26,7 +26,7 @@ window.onload=function() {
             width: window.innerWidth,
             height: window.innerHeight,
             parent: 'phaser-game',
-            scene: [SceneTitle, SceneMain, SceneOver]
+            scene: [SceneLoad, SceneTitle, SceneMain, SceneOver]
         };
 
     }
