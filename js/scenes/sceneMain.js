@@ -29,6 +29,8 @@ class SceneMain extends Phaser.Scene {
         emitter = new Phaser.Events.EventEmitter();
         controller = new Controller();
         model.gameOver = false;
+        model.speed = 1; // car speed is reset to this every time play again is pressed
+        model.score = 0; // score is reset to this every time play again is pressed
 
         this.road = new Road({scene: this}); // creates the road
         this.road.x = game.config.width * .25;
@@ -45,11 +47,13 @@ class SceneMain extends Phaser.Scene {
         //this.alignGrid.showNumbers(); // defines alignGrid class instance
         // this.alignGrid.placeAtIndex(4, this.sb); // temporary placement of scorebox
 
+        var soundButtons = new SoundButtons({scene: this});
+    
         this.sb = new ScoreBox({scene: this}); // passes in SceneMain as the scene
         this.sb.x = game.config.width / 2; // puts it in the center
         this.sb.y = 50; // 50px down from the top
-
-        var soundButtons = new SoundButtons({scene: this});
+        
+        emitter.on(G.SCORE_UPDATED, this.scoreUpdated, this);
 
         //var bar = new Bar({scene: this, x: 240, y: 320});
 
@@ -61,8 +65,14 @@ class SceneMain extends Phaser.Scene {
 
         // emitter.on('button_pressed', this.buttonPressed, this);
         
-        
-        
+    }
+    scoreUpdated() {
+        if (model.score / 5 == Math.floor(model.score / 5)) {
+            model.speed += .25;
+            if (model.speed > 1.5) {
+                model.speed == 1.5;
+            }
+        }
     }
     // buttonPressed(params) {
     //     console.log(params);
