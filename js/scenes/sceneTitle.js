@@ -11,7 +11,7 @@ class SceneTitle extends Phaser.Scene {
         controller = new Controller(); // instance of emitter has to exist before use of controller because its used inside the controller
 
         this.alignGrid = new AlignGrid({rows:11, cols:11, scene:this}); // adds grid to the scene
-        this.alignGrid.showNumbers();
+        //this.alignGrid.showNumbers();
 
         var title = this.add.image(0, 0, 'title'); // inserts title image
         Align.scaleToGameW(title, .5); // scales down the title

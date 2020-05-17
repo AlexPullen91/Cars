@@ -9,7 +9,7 @@ class SceneOver extends Phaser.Scene {
     create() {
 
         this.alignGrid = new AlignGrid({rows:11, cols:11, scene:this}); // adds grid to the scene
-        this.alignGrid.showNumbers();
+        //this.alignGrid.showNumbers();
 
         var title = this.add.image(0, 0, 'title'); // inserts title image
         Align.scaleToGameW(title, .5); // scales down the title
