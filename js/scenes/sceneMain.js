@@ -26,7 +26,8 @@ class SceneMain extends Phaser.Scene {
         
     }
     create() {
-        
+        emitter = new Phaser.Events.EventEmitter();
+        controller = new Controller();
         var mediaManager = new MediaManager({scene: this});
         model.gameOver = false;
         // mediaManager.setBackgroundMusic("backgroundMusic");
@@ -44,6 +45,8 @@ class SceneMain extends Phaser.Scene {
         this.alignGrid.placeAtIndex(4, this.sb); // passes in config object
 
         var sb = new SoundButtons({scene: this});
+
+        var bar = new Bar({scene: this, x: 240, y: 320});
 
         // var fireText = {color:'black', fontSize:30};
         // var flatButton = new FlatButton({scene:this, key:'button1', text:'Fire!', x:240, y:100, event: 'button_pressed', params:'fire_lasers', textConfig:fireText});

@@ -4,6 +4,10 @@ class SceneLoad extends Phaser.Scene {
     }
 
     preload() {
+
+        this.progText = this.add.text(game.config.width / 2, game.config.height / 2, "0%", {color: "#ffffff", fontSize: game.config.width / 20});
+        this.progText.setOrigin(0.5, 0.5);
+        this.load.on("progress", this.onProgress, this);
         this.load.image("road", "images/road.jpg");
         this.load.spritesheet("cars", "images/cars.png", {frameWidth: 60, frameHeight: 126});
         this.load.image("line", "images/line.png");
@@ -25,7 +29,11 @@ class SceneLoad extends Phaser.Scene {
         this.load.image("musicOn", "images/ui/icons/music_on.png")
         this.load.image("musicOff", "images/ui/icons/music_off.png")
     }
-
+    onProgress(value) {
+        console.log(value);
+        var per = Math.floor(value * 100)
+        this.progText.setText(per + "%");
+    }
     create() {
         this.scene.start("SceneTitle");
     }
