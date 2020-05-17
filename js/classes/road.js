@@ -32,11 +32,11 @@ class Road extends Phaser.GameObjects.Container {
     }
 
     addObject() { // adds police car
-        var objs = [{key:'pcar1', speed:10, scale:10}, {key:'pcar2', speed:10, scale:10}, {key:'cone', speed:20, scale:5}, {key:'barrier', speed:20, scale:8}];
-        var index = Math.floor(Math.random()*4); // pick a number between 0 and 4
+        var objs = [{key: 'pcar1', speed:10, scale: 10}, {key: 'pcar2', speed: 10, scale: 10}, {key: 'cone', speed: 20, scale: 5}, {key: 'barrier', speed: 20, scale: 8}];
+        var index = Math.floor(Math.random() * 4); // pick a number between 0 and 4
         var key = objs[index].key; // chooses a random item from objs to go onto the road
         var speed = objs[index].speed;
-        var scale = objs[index].scale/100; // changes scale of objects
+        var scale = objs[index].scale / 100; // changes scale of objects
 
         this.object = this.scene.add.sprite(-this.displayWidth / 4, 0, key); // places it at the top of the left hand lane
         this.object.speed = speed;
@@ -85,6 +85,9 @@ class Road extends Phaser.GameObjects.Container {
             }.bind(this));
         }
     }
+    goGameOver() {
+        this.scene.start("SceneOver");
+    }
 
     moveObject() {
         if (model.gameOver == true) { // when the car is hit it's game over
@@ -92,13 +95,15 @@ class Road extends Phaser.GameObjects.Container {
         }
         this.object.y += this.vSpace / this.object.speed;
         if (Collision.checkCollide(this.car, this.object) == true) {
-            this.car.alpha = .5; // fades the car out
+           // this.car.alpha = .5; // fades the car out
             model.gameOver = true;
             emitter.emit(G.PLAY_SOUND, "boom");
             // animates the crash
-            this.scene.tweens.add({targets:this.car, duration:1000, y:game.config.height, angle:-270});
+            this.scene.tweens.add({targets: this.car, duration: 1000, y: game.config.height, angle: -270});
+            // timer event to allow animation to play out before going to game over screen
+            this.scene.time.addEvent({ delay: 2000, callback: this.goGameOver, callbackScope: this.scene, loop: false});
         } else {
-            this.car.alpha = 1;
+           // this.car.alpha = 1;
         }
         if (this.object.y > game.config.height) { // if below the bottom of the game then destroy object
             emitter.emit(G.UP_POINTS, 1);

@@ -4,7 +4,7 @@ class SceneMain extends Phaser.Scene {
     }
     preload() {
         this.load.image("road", "images/road.jpg");
-        this.load.spritesheet("cars", "images/cars.png", {frameWidth:60,frameHeight:126});
+        this.load.spritesheet("cars", "images/cars.png", {frameWidth: 60, frameHeight: 126});
         this.load.image("line", "images/line.png");
         this.load.image("pcar1", "images/pcar1.png");
         this.load.image("pcar2", "images/pcar2.png");
@@ -28,21 +28,22 @@ class SceneMain extends Phaser.Scene {
     create() {
         
         var mediaManager = new MediaManager({scene: this});
+        model.gameOver = false;
         // mediaManager.setBackgroundMusic("backgroundMusic");
 
-        this.sb = new ScoreBox({scene:this}); // passes in SceneMain as the scene
+        this.sb = new ScoreBox({scene: this}); // passes in SceneMain as the scene
         this.sb.x = game.config.width - 50; // puts it in the center
         this.sb.y = 50; // 50px down from the top
 
-        this.road = new Road({scene:this}); // creates the road
+        this.road = new Road({scene: this}); // creates the road
         this.road.x = game.config.width / 2;
         this.road.makeLines(); // adds lines to the road
 
-        this.alignGrid = new AlignGrid({scene:this, rows:5, cols:5});
-        this.alignGrid.showNumbers(); // defines alignGrid class instance
+        this.alignGrid = new AlignGrid({scene: this, rows: 5, cols: 5});
+        //this.alignGrid.showNumbers(); // defines alignGrid class instance
         this.alignGrid.placeAtIndex(4, this.sb); // passes in config object
 
-        var sb = new SoundButtons({scene:this});
+        var sb = new SoundButtons({scene: this});
 
         // var fireText = {color:'black', fontSize:30};
         // var flatButton = new FlatButton({scene:this, key:'button1', text:'Fire!', x:240, y:100, event: 'button_pressed', params:'fire_lasers', textConfig:fireText});
