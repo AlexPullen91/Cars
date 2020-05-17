@@ -5,16 +5,16 @@ class ToggleButton extends Phaser.GameObjects.Container {
 		this.scene = config.scene;
 
 		this.back = this.scene.add.image(0, 0, config.backKey); // background of the button
-		this.onIcon = this.scene.add.image(0, 0, config.onIcon); 
-		this.offIcon = this.scene.add.image(0, 0, config.offIcon);
+		this.onIcon = this.scene.add.image(0, 0, config.onIcon);  // adds on icon
+		this.offIcon = this.scene.add.image(0, 0, config.offIcon); // adds off icon
 
-		Align.scaleToGameW(this.back, .1);
-		Align.scaleToGameW(this.onIcon, .05);
-		Align.scaleToGameW(this.offIcon, .05);
+		Align.scaleToGameW(this.back, .1); // scales background down
+		Align.scaleToGameW(this.onIcon, .05); // scales on icon down
+		Align.scaleToGameW(this.offIcon, .05); // scales off icon down
 
-		this.add(this.back);
-		this.add(this.onIcon);
-		this.add(this.offIcon);
+		this.add(this.back); // add background to the container
+		this.add(this.onIcon);  // add on icon to the container
+		this.add(this.offIcon); // add off icon to the container
 
 		if (!config.value) {
 			config.value = true;
@@ -29,7 +29,7 @@ class ToggleButton extends Phaser.GameObjects.Container {
 		this.setIcons();
 
 		this.back.setInteractive(); // makes it so it can be clicked
-		this.back.on('pointerdown', this.toggle, this);
+		this.back.on('pointerdown', this.toggle, this); // adds the listener
 
 		if (config.x) {
 			this.x = config.x;
@@ -37,7 +37,7 @@ class ToggleButton extends Phaser.GameObjects.Container {
 		if (config.y) {
 			this.y = config.y;
 		}
-		this.setSize(this.back.displayWidth, this.back.displayHeight);
+		this.setSize(this.back.displayWidth, this.back.displayHeight); // puts height and width properties in the toggle button
 		
 		this.scene.add.existing(this);
 	}

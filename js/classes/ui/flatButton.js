@@ -14,7 +14,7 @@ class FlatButton extends Phaser.GameObjects.Container {
         this.scene = config.scene; // reference to the scene
         this.back = this.scene.add.image(0, 0, config.key); // adds in the button
 
-        this.add(this.back);
+        this.add(this.back); // adds back to the container
 
         if (config.text) { // incase we're not making a blank button then we add a text field
             if (config.textConfig) {
