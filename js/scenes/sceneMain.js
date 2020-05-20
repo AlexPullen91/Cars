@@ -41,9 +41,9 @@ class SceneMain extends Phaser.Scene {
         // var flatButton = new FlatButton({scene:this, key:'button1', text:'Fire!', x:240, y:100, event: 'button_pressed', params:'fire_lasers', textConfig:fireText});
         // var flatButton2 = new FlatButton({scene:this, key:'button2', text:'Destruct!', x:240, y:300, event: 'button_pressed', params:'self_destruct'});
 
-        // var toggleButton = new ToggleButton({scene:this, backKey:'toggleBack', onIcon:'musicOn', offIcon:'musicOff', event:G.TOGGLE_MUSIC, x:240, y:450})
+        //var toggleButton = new ToggleButton({scene:this, backKey:'toggleBack', onIcon:'musicOn', offIcon:'musicOff', event:G.TOGGLE_MUSIC, x:240, y:450})
 
-        // emitter.on('button_pressed', this.buttonPressed, this);
+        //emitter.on('button_pressed', this.buttonPressed, this);
         
     }
     scoreUpdated() {

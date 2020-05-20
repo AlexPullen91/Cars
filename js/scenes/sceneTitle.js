@@ -22,7 +22,7 @@ class SceneTitle extends Phaser.Scene {
         this.alignGrid.placeAtIndex(93, btnStart);
 
         emitter.on('start_game', this.startGame, this); // listen for start game event
-        var mediaManager = new MediaManager({scene: this});
+        mediaManager = new MediaManager({scene: this});
         mediaManager.setBackgroundMusic("backgroundMusic");
     }
     startGame() {

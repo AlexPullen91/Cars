@@ -52,8 +52,8 @@ class Road extends Phaser.GameObjects.Container {
         if (model.gameOver == true) { // when the car is hit it's game over
             return;
         }
-        //mediaManager.playSound("whoosh"); // potential audio fix
-        emitter.emit(G.PLAY_SOUND, "whoosh");
+        mediaManager.playSound("whoosh"); // potential audio fix
+        //emitter.emit(G.PLAY_SOUND, "whoosh");
         if (this.car.x > 0) {
             this.car.x =- this.displayWidth / 4;
         } else {
@@ -98,8 +98,8 @@ class Road extends Phaser.GameObjects.Container {
         if (Collision.checkCollide(this.car, this.object) == true) {
            // this.car.alpha = .5; // fades the car out
             model.gameOver = true;
-            //mediaManager.playSound("boom"); // potential audio fix
-            emitter.emit(G.PLAY_SOUND, "boom");
+            mediaManager.playSound("boom"); // potential audio fix
+            //emitter.emit(G.PLAY_SOUND, "boom");
             // animates the crash
             this.scene.tweens.add({targets: this.car, duration: 1000, y: game.config.height, angle: -270});
             // timer event to allow animation to play out before going to game over screen
